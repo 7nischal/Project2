@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Library</title>
+   
+</head>
+<body>
+    <h1>Digital Library</h1>
+
+    <p>Available Books: <span id="availableBooks">10</span></p>
+
+    <form id="addBookForm">
+        <label for="bookTitle">Book Title:</label>
+        <input type="text" id="bookTitle" required>
+        <br>
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" required>
+        <br>
+
+        <input type="submit" value="Add Book">
+    </form>
+
+    <script>
+        const availableBooksCount = document.getElementById("availableBooks");
+        const addBookForm = document.getElementById("addBookForm");
+
+        addBookForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const bookTitle = document.getElementById("bookTitle").value;
+            const author = document.getElementById("author").value;
+
+            if (bookTitle && author) {
+                let currentCount = parseInt(availableBooksCount.textContent);
+                if (currentCount > 0) {
+                    currentCount--;
+                    availableBooksCount.textContent = currentCount;
+                    alert(`Book "${bookTitle}" by ${author} added.`);
+                } else {
+                    alert("No available books left.");
+                }
+                addBookForm.reset();
+            } else {
+                alert("Please enter both book title and author.");
+            }
+        });
+    </script>
+</body>
+</html>

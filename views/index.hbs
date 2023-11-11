@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1> Login </h1>
+    <form method="POST">
+        <Label for="username">Username:</Label>
+        <input type="text" id="username" name="useername" >
+        <br><br>
+
+        <label for="password">Password:</label>
+       <input type="password" id="password" name="password" >
+       <br><br>
+      
+       <p>{{message}}</p>
+
+       <input type="submit" name="selection" value="Login">
+    
+
+    <input type="submit" name="selection" value="Create Profile" id="createprofile">
+    </form>
+<script>
+   document.addEventListener("click", function(event) {
+    if (event.target && event.target.id === "createprofile") {
+        
+        window.location.href = "createprofile.hbs";
+    }
+});
+
+
+</script>
+
+</body>
+</html>

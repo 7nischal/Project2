@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Welcome to Digital Library</h1>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            width: 300px;
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+    
+
+    <p>Available Books: <span id="availableBooks">10</span></p>
+
+    <form id="addBookForm">
+
+        <p>Name: {{username}}</p>
+        <label for="bookTitle">Book Title:</label>
+        <input type="text" id="bookTitle" required>
+        <br>
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" required>
+        <br>
+
+        <input type="submit" value="Add Book">
+    </form>
+
+    <script>
+        const availableBooksCount = document.getElementById("availableBooks");
+        const addBookForm = document.getElementById("addBookForm");
+
+        addBookForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const bookTitle = document.getElementById("bookTitle").value;
+            const author = document.getElementById("author").value;
+
+
+
+            if (bookTitle && author) {
+                let currentCount = parseInt(availableBooksCount.textContent);
+                if (currentCount > 0) {
+                    currentCount--;
+                    availableBooksCount.textContent = currentCount;
+                    alert(`Book "${bookTitle}" by ${author} added.`);
+                } else {
+                    alert("No available books left.");
+                }
+                addBookForm.reset();
+            } else {
+                alert("Please enter both book title and author.");
+            }
+        });
+    </script>
+
+</body>
+</html>
